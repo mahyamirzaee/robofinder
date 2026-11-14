@@ -181,3 +181,15 @@ figcaption { margin: 8px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--
 @media (max-width: 760px) { .related ol { grid-template-columns: 1fr; gap: 14px; } }
 @media (max-width: 560px) { .tall { grid-template-columns: 1fr; } }
 @media (max-width: 480px) { .page { padding: 28px 16px 40px; } }
+
+/* ---------- Plain text (v3): one font, one colour, no decoration ---------- */
+.col p, .col h1, .col h2, .sub, figcaption, .try, .controls, .related, .related li::before, .foot, .lb-cap {
+  font-family: var(--text);
+  color: var(--ink);
+}
+.sub { margin: 0.2em 0 1.4em; }
+.col h2 { margin-top: 1.5em; }
+.col h2 + p { margin-top: 0.35em; }
+.try { font-weight: 700; font-size: 14.5px; text-decoration: underline; text-underline-offset: 0.25em; }
+figcaption { font-size: 13.5px; }
+.tall figcaption { font-size: 13.5px; }
