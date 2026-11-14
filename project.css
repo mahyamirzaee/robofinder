@@ -207,3 +207,19 @@ figcaption { font-size: 13.5px; }
 /* two key screens side by side, at the same height: columns follow each picture's width-to-height ratio */
 .more { grid-template-columns: 2.078fr 1.5fr; align-items: start; }
 @media (max-width: 700px) { .more { grid-template-columns: 1fr; } }
+
+/* ---------- Full screen (v7): pictures and the live prototype ---------- */
+.lightbox:fullscreen { padding: 24px; }
+.lightbox:fullscreen .lb-inner { max-width: 97vw; max-height: 90vh; }
+.lightbox:fullscreen .lb-inner img { max-height: 90vh; }
+.fs-btn {
+  position: absolute; right: 10px; bottom: 10px; z-index: 3;
+  width: 34px; height: 34px; border: 0; border-radius: 8px;
+  background: rgba(251, 250, 248, 0.92); color: var(--ink);
+  font-size: 18px; line-height: 1; cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+.fs-btn:hover { background: #fff; }
+.frame.live.is-full { aspect-ratio: auto; width: 100vw; height: 100vh; }
+.frame.live.is-full iframe { width: 100% !important; height: 100% !important; transform: none !important; }
+.frame.live.is-full .fs-btn { display: none; }

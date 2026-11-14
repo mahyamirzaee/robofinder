@@ -6,7 +6,7 @@
   <title>RoboFinder · Mahya Mirzaee</title>
   <meta name="description" content="RoboFinder: how people can discover, navigate and compare robotic technologies through an AI-supported platform. Interaction design and prototyping from my internship.">
   <meta name="theme-color" content="#fbfaf8">
-  <link rel="stylesheet" href="project.css?v=6">
+  <link rel="stylesheet" href="project.css?v=7">
 <style id="site-bar">
   /* same top bar as the portfolio (mahyamirzaee.github.io) */
   .site-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; padding: 4px 0 26px; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; }
@@ -59,8 +59,8 @@
           <iframe src="prototype.html" title="RoboFinder clickable prototype" loading="lazy" tabindex="0"></iframe>
         </div>
         <div class="slidebar">
-          <span class="livecap">Live prototype: scroll and click inside the frame.</span>
-          <a class="try" href="prototype.html" target="_blank" rel="noopener">Open full screen ↗</a>
+          <span class="livecap">Scroll down</span>
+          <a class="try" href="prototype.html" target="_blank" rel="noopener">Prototype overview ↗</a>
         </div>
       </figure>
     </div>
@@ -68,18 +68,17 @@
 
   <section class="more" aria-label="Key screens">
     <figure>
-      <div class="frame zoomable" data-cap="Two routes to a shortlist: browse or use the guided needs check"><img src="img/wizard.jpg" alt="Two routes to a shortlist: on the left, browse robots in the catalogue; on the right, the guided needs check at step 2 of 4, asking which task the robot should take over." loading="lazy"></div>
-      <figcaption>Two routes to one shortlist: users browse the catalogue themselves, or a guided needs check recommends matching robots.</figcaption>
+      <div class="frame zoomable" data-cap="Two routes to one shortlist: browse the catalogue, or get a guided recommendation."><img src="img/wizard.jpg" alt="Two routes to a shortlist: on the left, browse robots in the catalogue; on the right, the guided needs check at step 2 of 4, asking which task the robot should take over." loading="lazy"></div>
+      <figcaption>Two routes to one shortlist: browse the catalogue, or get a guided recommendation.</figcaption>
     </figure>
     <figure>
-      <div class="frame zoomable" data-cap="RoboFinder Insights: the knowledge section"><img src="img/insights.jpg" alt="RoboFinder Insights: content categories such as ROI studies, implementation guides and regulatory deep dives, above filters for content type, topic, industry and application." loading="lazy"></div>
-      <figcaption>Insights: technical knowledge structured into categories and filters, so decision-makers can find what applies to them.</figcaption>
+      <div class="frame zoomable" data-cap="Knowledge page: keeping clients updated on robotics news and related new technologies."><img src="img/insights.jpg" alt="RoboFinder Insights: content categories such as ROI studies, implementation guides and regulatory deep dives, above filters for content type, topic, industry and application." loading="lazy"></div>
+      <figcaption>Knowledge page: keeping clients updated on robotics news and related new technologies.</figcaption>
     </figure>
   </section>
   </main>
 
   <footer class="foot">
-    <span>Clickable browser prototype made during my internship at RoboFinder.</span>
     <span>Mahya Mirzaee, 2026</span>
   </footer>
 </div>
@@ -124,6 +123,8 @@
       opener = tile;
       lb.hidden = false;
       document.documentElement.style.overflow = "hidden";
+      // true full screen where the browser allows it; the overlay still works where it doesn't
+      if (lb.requestFullscreen) lb.requestFullscreen().catch(function () {});
       closeBtn.focus();
     }
     function close() {
@@ -131,8 +132,29 @@
       lb.hidden = true;
       inner.replaceChildren();
       document.documentElement.style.overflow = "";
+      if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
       if (opener) opener.focus();
     }
+    // leaving full screen with the browser's own Esc also closes the picture
+    document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement) close(); });
+
+    // the live prototype: a button opens it full screen, still clickable
+    var live = document.getElementById("live");
+    var fsBtn = document.createElement("button");
+    fsBtn.type = "button";
+    fsBtn.className = "fs-btn";
+    fsBtn.setAttribute("aria-label", "Open the prototype full screen");
+    fsBtn.textContent = "⤢";
+    live.appendChild(fsBtn);
+    fsBtn.addEventListener("click", function () {
+      if (live.requestFullscreen) live.requestFullscreen().catch(function () { window.open("prototype.html", "_blank"); });
+      else window.open("prototype.html", "_blank");
+    });
+    document.addEventListener("fullscreenchange", function () {
+      var on = document.fullscreenElement === live;
+      live.classList.toggle("is-full", on);
+      window.dispatchEvent(new Event("resize"));
+    });
 
     document.querySelectorAll(".zoomable").forEach(function (tile) {
       tile.tabIndex = 0;
