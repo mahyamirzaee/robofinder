@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Alongside · Mahya Mirzaee</title>
-  <meta name="description" content="Alongside: a comparison site for service robots, redesigned around a question buyers were not asked: who will work next to it?">
+  <title>RoboFinder · Mahya Mirzaee</title>
+  <meta name="description" content="RoboFinder: how people can discover, navigate and compare robotic technologies through an AI-supported platform. Interaction design and prototyping from my internship.">
   <meta name="theme-color" content="#fbfaf8">
-  <link rel="stylesheet" href="project.css?v=3">
+  <link rel="stylesheet" href="project.css?v=4">
 <style id="site-bar">
   /* same top bar as the portfolio (mahyamirzaee.github.io) */
   .site-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; padding: 4px 0 26px; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; }
@@ -39,27 +39,26 @@
   </nav>
 
   <main>
-  <!-- ===== Screen 1: the brief, what I heard, what changed ===== -->
   <section class="sheet" aria-labelledby="title">
     <div class="col">
-      <h1 id="title">Alongside</h1>
-      <p class="sub">UX research and design, internship project, 2026</p>
+      <h1 id="title">RoboFinder</h1>
+      <p class="sub">Human-Centred AI · Interaction Design · Prototyping · 2026</p>
 
-      <p>Alongside is a redesign of a website where businesses compare and buy service robots: machines that clean floors, serve food, move goods or welcome visitors. I made it during a UX internship. The company is anonymised, and the name, the makers and all robot data in the prototype are invented.</p>
+      <p>RoboFinder explores how people can discover, navigate and compare robotic technologies through an AI-supported platform.</p>
 
-      <h2>The problem</h2>
-      <p>The people who buy these robots are rarely engineers. They are facility, hotel and care managers who have to choose a machine they cannot fully judge. In four user interviews and in feedback from partner agencies, the same problems came up. The matching tool was hidden far down the page, and one participant scrolled seven times to find it. The form allowed only one answer, although most businesses work in several areas. Comparisons listed more than a hundred specifications, and empty fields made the data look unreliable. Product photos made large robots look small.</p>
+      <p>During my internship, I worked on selected parts of the application, translating project requirements into interaction concepts and interface prototypes. My work involved structuring information, developing interaction flows and exploring how AI-supported search and recommendations could make complex technical information more accessible.</p>
 
-      <h2>What I changed</h2>
-      <p>I moved the needs check to the top of the page and let every question take several answers. The result compares each robot with seven criteria chosen by the buyer and marks each one as met, not met or unknown. Missing data is named instead of left blank, so the buyer can see what still has to be asked. Every robot is drawn next to a person, so its real size is clear.</p>
+      <p>The project reflects my approach to HCI: connecting problem framing, information architecture and interaction design to turn emerging technological possibilities into tangible user experiences.</p>
+
+      <p class="note">Prototype developed as part of my internship at RoboFinder. Selected application components designed and prototyped during my internship at RoboFinder, based on project requirements. The prototype represents my design contributions rather than the complete platform.</p>
     </div>
 
     <div class="cluster">
       <figure>
-        <div class="frame r32 slides zoomable" id="slides" aria-roledescription="slideshow" aria-label="Screen captures of the prototype" data-cap="Alongside · clickable prototype">
-          <img class="slide on" src="img/1-check.jpg" alt="The homepage: the headline on the left, and the first step of the needs check on the right, asking where the robot will work, with two answers ticked.">
-          <img class="slide" src="img/2-team.jpg" alt="Step four of the needs check: who works next to the robot? Cleaning team and guests are ticked, with the line: why we ask: a robot changes the work of the people next to it." loading="lazy">
-          <img class="slide" src="img/3-result.jpg" alt="The result: a decision you can defend. Three robots, the first one open with seven criteria, six met and one marked unknown, and a note for the cleaning team." loading="lazy">
+        <div class="frame r32 slides zoomable" id="slides" aria-roledescription="slideshow" aria-label="Screen captures of the prototype" data-cap="RoboFinder · clickable prototype">
+          <img class="slide on" src="img/1-check.jpg" alt="The RoboFinder homepage: the headline on the left, and the first step of the guided needs check on the right, asking where the robot will work, with two answers ticked.">
+          <img class="slide" src="img/2-team.jpg" alt="Step four of the needs check, asking who works next to the robot, with two answers ticked." loading="lazy">
+          <img class="slide" src="img/3-result.jpg" alt="The recommendation: three robots, the first one open with seven criteria, six met and one marked unknown." loading="lazy">
         </div>
         <div class="slidebar">
           <a class="try" href="prototype.html" target="_blank" rel="noopener">Try the clickable prototype ↗</a>
@@ -74,44 +73,20 @@
     </div>
   </section>
 
-  <!-- ===== Screen 2: the added question, tensions, reflection ===== -->
-  <section class="sheet" aria-labelledby="question-title">
-    <div class="col">
-      <h2 id="question-title">The question I added</h2>
-      <p>None of the questions asked about the people who would work with the robot. A cleaning robot changes the work of the cleaning team, and a serving robot changes the work of the waiters. So the last step of the needs check asks who will work next to the robot. The result ends with a short note for that team: what the robot takes over, what stays with people, and why to talk with them before it arrives.</p>
-
-      <h2>Open tensions</h2>
-      <p>Some tensions stay open in the design. The site calls itself neutral but earns money from enquiries, so the result says this in one line. Showing unknown data makes the site look less certain, but it makes the decision easier to explain. And one page has to serve both a manager who wants a quick answer and an engineer who wants the full data sheet.</p>
-
-      <h2>Reflection</h2>
-      <p>My other projects are speculative. Here the goal was a clear page that leads to enquiries, and my contribution was to ask who else is affected by a purchase. The note for the team is still written for the buyer, not with the team. The people who will work next to the robot were not part of my interviews, and the prototype has not been tested with buyers. Both would be the next steps.</p>
-      <p>I built the prototype with Claude. It let me try an idea within hours, and it taught me to test carefully what only looks finished.</p>
-    </div>
-
-    <div class="cluster">
-      <figure class="wide">
-        <div class="frame zoomable" data-cap="Robots drawn to scale next to a 1.75 m person"><img src="img/4-robots.jpg" alt="Four robot categories drawn as green line drawings, each beside a grey 1.75 m figure with its height marked: cleaning 1.1 m, delivery 1.3 m, transport 0.35 m, reception 1.4 m." loading="lazy"></div>
-        <figcaption>Every robot is drawn next to a person, so its size is clear.</figcaption>
-      </figure>
-      <figure class="tall">
-        <div class="frame zoomable" data-cap="The result: seven criteria, one unknown shown openly, and a note for the people alongside"><img src="img/result-card.jpg" alt="The result card up close: CR-40 meets six of seven criteria; the data sheet is marked unknown in purple. Below, a note for the cleaning team." loading="lazy"></div>
-        <figcaption>The result compares each robot with the buyer's seven criteria: met, not met or unknown. Unknown data is shown instead of left blank. Below it is the note for the people who will work next to the robot.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="related" aria-labelledby="related-title">
-    <h2 class="cluster-title" id="related-title">Related work</h2>
-    <ol>
-      <li>Hassenzahl, <i>Experience Design: Technology for All the Right Reasons</i> (2010) · designing for what people want to be, not only what they do</li>
-      <li>Dörrenbächer et al. (eds.), <i>Meaningful Futures with Robots</i> (2023) · robots as part of everyday practice, not only products</li>
-      <li>Carros et al. (2020) · a ten-week case study of a robot in a care home, and the people around it</li>
-    </ol>
+  <section class="more" aria-label="More screens">
+    <figure>
+      <div class="frame zoomable" data-cap="Recommendation view"><img src="img/result-card.jpg" alt="The recommendation up close: a cleaning robot meets six of seven criteria, and the missing data sheet value is marked unknown." loading="lazy"></div>
+      <figcaption>Recommendation view: each robot is compared with the user's criteria, and missing data is shown instead of left blank.</figcaption>
+    </figure>
+    <figure>
+      <div class="frame zoomable" data-cap="Robot categories, drawn to scale"><img src="img/4-robots.jpg" alt="Four robot categories drawn as line drawings, each beside a 1.75 m figure with its height marked: cleaning 1.1 m, delivery 1.3 m, transport 0.35 m, reception 1.4 m." loading="lazy"></div>
+      <figcaption>Robot categories: each robot is drawn next to a person, so its size is easy to understand.</figcaption>
+    </figure>
   </section>
   </main>
 
   <footer class="foot">
-    <span>Built: a clickable browser prototype with invented data. Company and makers anonymised.</span>
+    <span>Clickable browser prototype. Robot models, maker names and data are invented for the prototype.</span>
     <span>Mahya Mirzaee, 2026</span>
   </footer>
 </div>
