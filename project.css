@@ -226,3 +226,19 @@ figcaption { font-size: 13.5px; }
 
 /* footer: only the name, centred (v8) */
 .foot { justify-content: center; text-align: center; }
+
+/* ---------- Gallery arrows (v9) ---------- */
+.lb-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+  width: 52px; height: 52px; border: 0; border-radius: 50%;
+  background: rgba(20, 20, 24, 0.08); color: var(--ink);
+  font-size: 34px; line-height: 1; cursor: pointer;
+}
+.lb-nav:hover { background: rgba(20, 20, 24, 0.16); }
+.lb-prev { left: 18px; }
+.lb-next { right: 18px; }
+.lb-inner img.lb-link { cursor: pointer; }
+.lb-cap { white-space: pre; }
+@media (max-width: 600px) { .lb-nav { width: 40px; height: 40px; font-size: 26px; } .lb-prev { left: 6px; } .lb-next { right: 6px; } .lb-cap { white-space: normal; } }
+.lb-nav { background: rgba(251, 250, 248, 0.95); box-shadow: 0 4px 16px rgba(20, 20, 24, 0.25); }
+.lb-nav:hover { background: #fff; }

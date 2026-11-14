@@ -6,7 +6,7 @@
   <title>RoboFinder · Mahya Mirzaee</title>
   <meta name="description" content="RoboFinder: how people can discover, navigate and compare robotic technologies through an AI-supported platform. Interaction design and prototyping from my internship.">
   <meta name="theme-color" content="#fbfaf8">
-  <link rel="stylesheet" href="project.css?v=8">
+  <link rel="stylesheet" href="project.css?v=10">
 <style id="site-bar">
   /* same top bar as the portfolio (mahyamirzaee.github.io) */
   .site-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; padding: 4px 0 26px; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; }
@@ -95,35 +95,60 @@
 </script>
 
 <script>
-  // Large view: click (or Enter) on a picture opens it big.
+  // Gallery: click a picture to open it full screen, then move left and right
+  // (arrows, keyboard or swipe). The first picture is the website: clicking it opens the prototype.
   (function () {
+    var items = [{
+      src: "img/hero.jpg",
+      alt: "The RoboFinder website: Find the right service robot for your business, with a product comparison preview and the RoFi mascot.",
+      cap: "The RoboFinder website. Click the picture to open it.",
+      href: "prototype.html"
+    }];
+    var tiles = Array.prototype.slice.call(document.querySelectorAll(".more .zoomable"));
+    tiles.forEach(function (tile) {
+      var img = tile.querySelector("img");
+      items.push({ src: img.getAttribute("src"), alt: img.getAttribute("alt") || "", cap: tile.getAttribute("data-cap") || "" });
+    });
+
     var lb = document.createElement("div");
     lb.className = "lightbox";
     lb.hidden = true;
     lb.setAttribute("role", "dialog");
     lb.setAttribute("aria-modal", "true");
-    lb.setAttribute("aria-label", "Large view");
-    lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close large view">×</button>' +
-                   '<div class="lb-inner"></div><p class="lb-cap"></p>';
+    lb.setAttribute("aria-label", "Pictures");
+    lb.innerHTML =
+      '<button class="lb-close" type="button" aria-label="Close">×</button>' +
+      '<button class="lb-nav lb-prev" type="button" aria-label="Previous picture">‹</button>' +
+      '<div class="lb-inner"></div>' +
+      '<button class="lb-nav lb-next" type="button" aria-label="Next picture">›</button>' +
+      '<p class="lb-cap"></p>';
     document.body.appendChild(lb);
     var inner = lb.querySelector(".lb-inner");
     var cap = lb.querySelector(".lb-cap");
     var closeBtn = lb.querySelector(".lb-close");
-    var opener = null;
+    var i = 0, opener = null;
 
-    function open(tile) {
-      var m = tile.classList.contains("slides") ? tile.querySelector(".slide.on") : tile.querySelector("img");
-      if (!m) return;
+    function show(n) {
+      i = (n + items.length) % items.length;
+      var it = items[i];
       var big = document.createElement("img");
-      big.src = m.getAttribute("src");
-      big.alt = m.getAttribute("alt") || "";
-      big.addEventListener("click", function (e) { e.stopPropagation(); });
+      big.src = it.src;
+      big.alt = it.alt;
+      if (it.href) {
+        big.className = "lb-link";
+        big.title = "Open the website";
+        big.addEventListener("click", function (e) { e.stopPropagation(); window.open(it.href, "_blank", "noopener"); });
+      } else {
+        big.addEventListener("click", function (e) { e.stopPropagation(); });
+      }
       inner.replaceChildren(big);
-      cap.textContent = tile.getAttribute("data-cap") || big.alt;
-      opener = tile;
+      cap.textContent = it.cap + "   " + (i + 1) + " / " + items.length;
+    }
+    function open(n, from) {
+      opener = from || null;
+      show(n);
       lb.hidden = false;
       document.documentElement.style.overflow = "hidden";
-      // true full screen where the browser allows it; the overlay still works where it doesn't
       if (lb.requestFullscreen) lb.requestFullscreen().catch(function () {});
       closeBtn.focus();
     }
@@ -132,11 +157,39 @@
       lb.hidden = true;
       inner.replaceChildren();
       document.documentElement.style.overflow = "";
-      if (document.fullscreenElement && document.exitFullscreen) document.exitFullscreen().catch(function () {});
+      if (document.fullscreenElement === lb && document.exitFullscreen) document.exitFullscreen().catch(function () {});
       if (opener) opener.focus();
     }
-    // leaving full screen with the browser's own Esc also closes the picture
-    document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement) close(); });
+
+    tiles.forEach(function (tile, n) {
+      tile.tabIndex = 0;
+      tile.setAttribute("role", "button");
+      tile.setAttribute("aria-label", "Open picture full screen");
+      tile.addEventListener("click", function () { open(n + 1, tile); });
+      tile.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(n + 1, tile); }
+      });
+    });
+    lb.querySelector(".lb-prev").addEventListener("click", function (e) { e.stopPropagation(); show(i - 1); });
+    lb.querySelector(".lb-next").addEventListener("click", function (e) { e.stopPropagation(); show(i + 1); });
+    lb.addEventListener("click", close);
+    closeBtn.addEventListener("click", function (e) { e.stopPropagation(); close(); });
+    document.addEventListener("keydown", function (e) {
+      if (lb.hidden) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") show(i - 1);
+      if (e.key === "ArrowRight") show(i + 1);
+    });
+    // swipe on phones and touch screens
+    var x0 = null;
+    lb.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) show(dx < 0 ? i + 1 : i - 1);
+      x0 = null;
+    });
+    document.addEventListener("fullscreenchange", function () { if (!document.fullscreenElement && !lb.hidden) close(); });
 
     // the live prototype: a button opens it full screen, still clickable
     var live = document.getElementById("live");
@@ -151,23 +204,9 @@
       else window.open("prototype.html", "_blank");
     });
     document.addEventListener("fullscreenchange", function () {
-      var on = document.fullscreenElement === live;
-      live.classList.toggle("is-full", on);
+      live.classList.toggle("is-full", document.fullscreenElement === live);
       window.dispatchEvent(new Event("resize"));
     });
-
-    document.querySelectorAll(".zoomable").forEach(function (tile) {
-      tile.tabIndex = 0;
-      tile.setAttribute("role", "button");
-      tile.setAttribute("aria-label", "Open large view");
-      tile.addEventListener("click", function () { open(tile); });
-      tile.addEventListener("keydown", function (e) {
-        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(tile); }
-      });
-    });
-    lb.addEventListener("click", close);
-    closeBtn.addEventListener("click", function (e) { e.stopPropagation(); close(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
   })();
 </script>
 </body>
