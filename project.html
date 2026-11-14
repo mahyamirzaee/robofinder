@@ -6,7 +6,7 @@
   <title>RoboFinder · Mahya Mirzaee</title>
   <meta name="description" content="RoboFinder: how people can discover, navigate and compare robotic technologies through an AI-supported platform. Interaction design and prototyping from my internship.">
   <meta name="theme-color" content="#fbfaf8">
-  <link rel="stylesheet" href="project.css?v=4">
+  <link rel="stylesheet" href="project.css?v=5">
 <style id="site-bar">
   /* same top bar as the portfolio (mahyamirzaee.github.io) */
   .site-bar { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 24px; padding: 4px 0 26px; font-family: "Atkinson Hyperlegible Next", system-ui, sans-serif; }
@@ -55,76 +55,43 @@
 
     <div class="cluster">
       <figure>
-        <div class="frame r32 slides zoomable" id="slides" aria-roledescription="slideshow" aria-label="Screen captures of the prototype" data-cap="RoboFinder · clickable prototype">
-          <img class="slide on" src="img/1-check.jpg" alt="The RoboFinder homepage: the headline on the left, and the first step of the guided needs check on the right, asking where the robot will work, with two answers ticked.">
-          <img class="slide" src="img/2-team.jpg" alt="Step four of the needs check, asking who works next to the robot, with two answers ticked." loading="lazy">
-          <img class="slide" src="img/3-result.jpg" alt="The recommendation: three robots, the first one open with seven criteria, six met and one marked unknown." loading="lazy">
+        <div class="frame r32 live" id="live">
+          <iframe src="prototype.html" title="RoboFinder clickable prototype" loading="lazy" tabindex="0"></iframe>
         </div>
         <div class="slidebar">
-          <a class="try" href="prototype.html" target="_blank" rel="noopener">Try the clickable prototype ↗</a>
-          <div class="controls">
-            <button type="button" id="slide-pause" aria-label="Pause slideshow">II</button>
-            <button type="button" id="slide-prev" aria-label="Previous image">‹</button>
-            <span class="count" id="slide-count">1/3</span>
-            <button type="button" id="slide-next" aria-label="Next image">›</button>
-          </div>
+          <span class="livecap">Live prototype: scroll and click inside the frame.</span>
+          <a class="try" href="prototype.html" target="_blank" rel="noopener">Open full screen ↗</a>
         </div>
       </figure>
     </div>
   </section>
 
-  <section class="more" aria-label="More screens">
+  <section class="more" aria-label="Key screens">
     <figure>
-      <div class="frame zoomable" data-cap="Recommendation view"><img src="img/result-card.jpg" alt="The recommendation up close: a cleaning robot meets six of seven criteria, and the missing data sheet value is marked unknown." loading="lazy"></div>
-      <figcaption>Recommendation view: each robot is compared with the user's criteria, and missing data is shown instead of left blank.</figcaption>
+      <div class="frame zoomable" data-cap="Needs check: a guided path to matching robots"><img src="img/needs-check.jpg" alt="The needs check section: Which robot fits your business? On the right, step 2 of 4 asks which industry you are in, with Hospitality selected." loading="lazy"></div>
+      <figcaption>Needs check: a few guided questions lead to matching robot models instead of a long list.</figcaption>
     </figure>
     <figure>
-      <div class="frame zoomable" data-cap="Robot categories, drawn to scale"><img src="img/4-robots.jpg" alt="Four robot categories drawn as line drawings, each beside a 1.75 m figure with its height marked: cleaning 1.1 m, delivery 1.3 m, transport 0.35 m, reception 1.4 m." loading="lazy"></div>
-      <figcaption>Robot categories: each robot is drawn next to a person, so its size is easy to understand.</figcaption>
+      <div class="frame zoomable" data-cap="The problem, and two paths to a result"><img src="img/problem.jpg" alt="The problem section with four cards about why buying robots is hard, and below it the smart matching block with two paths: browse robots or use the needs check." loading="lazy"></div>
+      <figcaption>Problem framing and smart matching: two paths, browsing or a guided check, lead to one result.</figcaption>
     </figure>
   </section>
   </main>
 
   <footer class="foot">
-    <span>Clickable browser prototype. Robot models, maker names and data are invented for the prototype.</span>
+    <span>Clickable browser prototype made during my internship at RoboFinder.</span>
     <span>Mahya Mirzaee, 2026</span>
   </footer>
 </div>
 
 <script>
-  // Slideshow: the next screen capture every 6 seconds.
-  // Pauses on hover and with the II button; stays still for visitors who reduce motion.
+  // The live prototype is laid out at 1440 x 960 and scaled to fit its frame.
   (function () {
-    var box = document.getElementById("slides");
-    var slides = box.querySelectorAll(".slide");
-    var count = document.getElementById("slide-count");
-    var pauseBtn = document.getElementById("slide-pause");
-    var i = 0, timer = null, paused = false, hovering = false;
-    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    function go(n) {
-      slides[i].classList.remove("on");
-      i = (n + slides.length) % slides.length;
-      slides[i].classList.add("on");
-      count.textContent = (i + 1) + "/" + slides.length;
-    }
-    function schedule() {
-      clearInterval(timer);
-      if (!paused && !hovering) timer = setInterval(function () { go(i + 1); }, 6000);
-    }
-    document.getElementById("slide-next").onclick = function () { go(i + 1); schedule(); };
-    document.getElementById("slide-prev").onclick = function () { go(i - 1); schedule(); };
-    pauseBtn.onclick = function () {
-      paused = !paused;
-      pauseBtn.textContent = paused ? "▶" : "II";
-      pauseBtn.setAttribute("aria-label", paused ? "Play slideshow" : "Pause slideshow");
-      schedule();
-    };
-    box.addEventListener("mouseenter", function () { hovering = true; schedule(); });
-    box.addEventListener("mouseleave", function () { hovering = false; schedule(); });
-    if (reduce) { paused = true; pauseBtn.textContent = "▶"; }
-    count.textContent = "1/" + slides.length;
-    schedule();
+    var box = document.getElementById('live');
+    var frame = box.querySelector('iframe');
+    function fit() { frame.style.transform = 'scale(' + (box.clientWidth / 1440) + ')'; }
+    fit();
+    window.addEventListener('resize', fit);
   })();
 </script>
 

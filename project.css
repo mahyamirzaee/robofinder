@@ -199,3 +199,11 @@ figcaption { font-size: 13.5px; }
 .more { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 24px; align-items: end; margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--rule); }
 .more img { width: 100%; height: auto; }
 @media (max-width: 700px) { .more { grid-template-columns: 1fr; } }
+
+/* ---------- Live prototype in the frame (v5) ---------- */
+.frame.live { background: #0a0a0e; }
+.frame.live iframe { position: absolute; top: 0; left: 0; width: 1440px; height: 960px; border: 0; transform-origin: 0 0; }
+.livecap { font-size: 13.5px; color: var(--ink); }
+/* two key screens side by side, at the same height: columns follow each picture's width-to-height ratio */
+.more { grid-template-columns: 3.306fr 1.896fr; align-items: start; }
+@media (max-width: 700px) { .more { grid-template-columns: 1fr; } }
