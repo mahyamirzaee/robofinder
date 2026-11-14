@@ -223,3 +223,6 @@ figcaption { font-size: 13.5px; }
 .frame.live.is-full { aspect-ratio: auto; width: 100vw; height: 100vh; }
 .frame.live.is-full iframe { width: 100% !important; height: 100% !important; transform: none !important; }
 .frame.live.is-full .fs-btn { display: none; }
+
+/* footer: only the name, centred (v8) */
+.foot { justify-content: center; text-align: center; }
