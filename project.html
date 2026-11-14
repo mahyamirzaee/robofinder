@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alongside · Mahya Mirzaee</title>
+  <meta name="description" content="Alongside: a comparison site for service robots, redesigned around a question buyers were not asked — who will work next to it?">
+  <meta name="theme-color" content="#fbfaf8">
+  <link rel="stylesheet" href="project.css?v=2">
+</head>
+<body>
+<div class="page">
+
+  <nav class="top" aria-label="Site">
+    <a href="https://mahyamirzaee.github.io/">‹ back</a>
+  </nav>
+
+  <main>
+  <!-- ===== Screen 1: the brief, what I heard, what changed ===== -->
+  <section class="sheet" aria-labelledby="title">
+    <div class="col">
+      <h1 id="title">Alongside</h1>
+      <p class="sub">UX Research &amp; Design · Internship project · 2026</p>
+      <div class="thread" aria-hidden="true"></div>
+
+      <p class="lead">A comparison site for service robots, redesigned around a question nobody was asking: who will work next to it?</p>
+
+      <h2>The brief</h2>
+      <p>During a UX internship I worked on a platform that helps businesses compare and buy service robots — for cleaning, serving, transport and reception. Its buyers are rarely engineers. They are facility, hotel and care managers choosing a machine they cannot fully judge. The company is anonymised here; the name, the makers and all robot data are invented.</p>
+
+      <h2>What I heard, and what changed</h2>
+      <p class="small">I ran four user interviews and sorted feedback from partner agencies. Each change in the prototype answers something I heard.</p>
+      <ul class="heard">
+        <li><b>Buried.</b> One participant scrolled seven times before reaching the matching tool.
+          <span class="then">The needs check now opens the page.</span></li>
+        <li><b>One answer only.</b> Businesses work in several areas and pay in several ways; the form allowed one.
+          <span class="then">Every question takes several answers.</span></li>
+        <li><b>Too much, and blank.</b> Comparisons listed over a hundred specs, and empty fields looked like missing work.
+          <span class="then">Seven criteria. What is unknown is marked, not hidden.</span></li>
+        <li><b>Wrong size.</b> Product photos made large robots look small.
+          <span class="then">Each robot is drawn next to a person, with its height.</span></li>
+      </ul>
+    </div>
+
+    <div class="cluster">
+      <figure>
+        <div class="frame r32 slides zoomable" id="slides" aria-roledescription="slideshow" aria-label="Screen captures of the prototype" data-cap="Alongside · clickable prototype">
+          <img class="slide on" src="img/1-check.jpg" alt="The homepage: the headline on the left, and the first step of the needs check on the right — where will the robot work? — with two answers ticked.">
+          <img class="slide" src="img/2-team.jpg" alt="Step four of the needs check: who works next to the robot? Cleaning team and guests are ticked, with the line: why we ask — a robot changes the work of the people next to it." loading="lazy">
+          <img class="slide" src="img/3-result.jpg" alt="The result: a decision you can defend. Three robots, the first one open with seven criteria — six met, one marked unknown — and a note for the cleaning team." loading="lazy">
+        </div>
+        <div class="slidebar">
+          <a class="try" href="prototype.html" target="_blank" rel="noopener">Try the clickable prototype ↗</a>
+          <div class="controls">
+            <button type="button" id="slide-pause" aria-label="Pause slideshow">II</button>
+            <button type="button" id="slide-prev" aria-label="Previous image">‹</button>
+            <span class="count" id="slide-count">1/3</span>
+            <button type="button" id="slide-next" aria-label="Next image">›</button>
+          </div>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== Screen 2: the added question, tensions, reflection ===== -->
+  <section class="sheet" aria-labelledby="question-title">
+    <div class="col">
+      <h2 id="question-title">The question I added</h2>
+      <p class="rq">Who works next to the robot?</p>
+      <p>A robot changes the work of the cleaner, the nurse and the waiter beside it, yet the site treated it as a product in a basket. The last step of the needs check asks about them, and the result answers with a short note for that team: what the robot takes over, what stays with people, and when to talk to them.</p>
+
+      <h2>Tensions</h2>
+      <p class="tension-intro">Not problems the design solves. Tensions it holds open, and keeps visible.</p>
+      <ul class="tensions">
+        <li>
+          <span class="pair"><b>Neutral</b><i aria-hidden="true"></i><b>Paid</b></span>
+          <span class="say">The site promises neutrality and earns from enquiries. The result says so, in one line.</span>
+        </li>
+        <li>
+          <span class="pair"><b>Confident</b><i aria-hidden="true"></i><b>Honest</b></span>
+          <span class="say">Hiding the unknowns would look surer. Showing them is what lets the decision hold.</span>
+        </li>
+        <li>
+          <span class="pair"><b>Novice</b><i aria-hidden="true"></i><b>Expert</b></span>
+          <span class="say">One page for the manager who wants an answer and the engineer who wants the data sheet.</span>
+        </li>
+        <li>
+          <span class="pair"><b>Product</b><i aria-hidden="true"></i><b>Colleague</b></span>
+          <span class="say">Bought like a machine, lived with like a co-worker.</span>
+        </li>
+      </ul>
+
+      <h2>Reflection</h2>
+      <p>Most of my work is speculative. Here the task was clarity and conversion, and what I brought was the habit of asking who else is in the room. I built the prototype with Claude, which let me try an idea in hours instead of days — and taught me to test what only looks finished.</p>
+      <p class="proposal">This is a prototype, not a result. It rests on four interviews and has not been tested with buyers. That would be the next step.</p>
+    </div>
+
+    <div class="cluster">
+      <figure class="wide">
+        <div class="frame zoomable" data-cap="Robots drawn to scale next to a 1.75 m person"><img src="img/4-robots.jpg" alt="Four robot categories drawn as green line drawings, each beside a grey 1.75 m figure with its height marked: cleaning 1.1 m, delivery 1.3 m, transport 0.35 m, reception 1.4 m." loading="lazy"></div>
+        <figcaption>Drawn, not photographed: every robot stands next to a person, so its size is clear.</figcaption>
+      </figure>
+      <figure class="tall">
+        <div class="frame zoomable" data-cap="The result: seven criteria, one unknown shown openly, and a note for the people alongside"><img src="img/result-card.jpg" alt="The result card up close: CR-40 meets six of seven criteria; the data sheet is marked unknown in purple. Below, a note for the cleaning team." loading="lazy"></div>
+        <figcaption><b>A decision you can defend.</b> Each robot is counted against the buyer's own seven criteria: met, not met, or unknown — and the unknown is shown, in purple, instead of left blank. Under it, a note for the people who will work alongside.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="related" aria-labelledby="related-title">
+    <h2 class="cluster-title" id="related-title">Related work</h2>
+    <ol>
+      <li>Hassenzahl, <i>Experience Design: Technology for All the Right Reasons</i> (2010) · designing for what people want to be, not only what they do</li>
+      <li>Dörrenbächer et al. (eds.), <i>Meaningful Futures with Robots</i> (2023) · robots as part of everyday practice, not only products</li>
+      <li>Carros et al. (2020) · a ten-week case study of a robot in a care home, and the people around it</li>
+    </ol>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <span>Built: a clickable browser prototype with invented data. Company and makers anonymised.</span>
+    <span>Mahya Mirzaee, 2026</span>
+  </footer>
+</div>
+
+<script>
+  // Slideshow: the next screen capture every 6 seconds.
+  // Pauses on hover and with the II button; stays still for visitors who reduce motion.
+  (function () {
+    var box = document.getElementById("slides");
+    var slides = box.querySelectorAll(".slide");
+    var count = document.getElementById("slide-count");
+    var pauseBtn = document.getElementById("slide-pause");
+    var i = 0, timer = null, paused = false, hovering = false;
+    var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function go(n) {
+      slides[i].classList.remove("on");
+      i = (n + slides.length) % slides.length;
+      slides[i].classList.add("on");
+      count.textContent = (i + 1) + "/" + slides.length;
+    }
+    function schedule() {
+      clearInterval(timer);
+      if (!paused && !hovering) timer = setInterval(function () { go(i + 1); }, 6000);
+    }
+    document.getElementById("slide-next").onclick = function () { go(i + 1); schedule(); };
+    document.getElementById("slide-prev").onclick = function () { go(i - 1); schedule(); };
+    pauseBtn.onclick = function () {
+      paused = !paused;
+      pauseBtn.textContent = paused ? "▶" : "II";
+      pauseBtn.setAttribute("aria-label", paused ? "Play slideshow" : "Pause slideshow");
+      schedule();
+    };
+    box.addEventListener("mouseenter", function () { hovering = true; schedule(); });
+    box.addEventListener("mouseleave", function () { hovering = false; schedule(); });
+    if (reduce) { paused = true; pauseBtn.textContent = "▶"; }
+    count.textContent = "1/" + slides.length;
+    schedule();
+  })();
+</script>
+
+<script>
+  // Large view: click (or Enter) on a picture opens it big.
+  (function () {
+    var lb = document.createElement("div");
+    lb.className = "lightbox";
+    lb.hidden = true;
+    lb.setAttribute("role", "dialog");
+    lb.setAttribute("aria-modal", "true");
+    lb.setAttribute("aria-label", "Large view");
+    lb.innerHTML = '<button class="lb-close" type="button" aria-label="Close large view">×</button>' +
+                   '<div class="lb-inner"></div><p class="lb-cap"></p>';
+    document.body.appendChild(lb);
+    var inner = lb.querySelector(".lb-inner");
+    var cap = lb.querySelector(".lb-cap");
+    var closeBtn = lb.querySelector(".lb-close");
+    var opener = null;
+
+    function open(tile) {
+      var m = tile.classList.contains("slides") ? tile.querySelector(".slide.on") : tile.querySelector("img");
+      if (!m) return;
+      var big = document.createElement("img");
+      big.src = m.getAttribute("src");
+      big.alt = m.getAttribute("alt") || "";
+      big.addEventListener("click", function (e) { e.stopPropagation(); });
+      inner.replaceChildren(big);
+      cap.textContent = tile.getAttribute("data-cap") || big.alt;
+      opener = tile;
+      lb.hidden = false;
+      document.documentElement.style.overflow = "hidden";
+      closeBtn.focus();
+    }
+    function close() {
+      if (lb.hidden) return;
+      lb.hidden = true;
+      inner.replaceChildren();
+      document.documentElement.style.overflow = "";
+      if (opener) opener.focus();
+    }
+
+    document.querySelectorAll(".zoomable").forEach(function (tile) {
+      tile.tabIndex = 0;
+      tile.setAttribute("role", "button");
+      tile.setAttribute("aria-label", "Open large view");
+      tile.addEventListener("click", function () { open(tile); });
+      tile.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(tile); }
+      });
+    });
+    lb.addEventListener("click", close);
+    closeBtn.addEventListener("click", function (e) { e.stopPropagation(); close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
+</script>
+</body>
+</html>

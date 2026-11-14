@@ -1,0 +1,183 @@
+/* Alongside — project page.
+   Same frame as Nothing Recent: a narrow text column beside the pictures,
+   a second screen with tensions and reflection, related work and a footer. */
+
+@font-face {
+  font-family: "Literata";
+  src: url("fonts/Literata.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("fonts/AtkinsonHyperlegibleNext.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+:root {
+  --paper: #fbfaf8;
+  --ink: #141418;
+  --soft: #55555f;
+  --indigo: #26307f;
+  --lilac: #b3add8;
+  --rule: rgba(38, 48, 127, 0.16);
+  --head: "Literata", Georgia, serif;
+  --text: "Atkinson Hyperlegible Next", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: 15px;
+  line-height: 1.58;
+  letter-spacing: 0.015em;
+}
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible, .zoomable:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+img { display: block; max-width: 100%; }
+p { margin: 0 0 0.9em; }
+figure { margin: 0; }
+
+/* ---------- Page frame ---------- */
+.page { max-width: 1340px; margin: 0 auto; padding: 28px 48px 24px; }
+@media (min-width: 1000px) { .page { zoom: 0.825; } }   /* desktop shown at 82.5%, like the other project pages */
+
+.top { margin-bottom: 24px; font-size: 14px; }
+.top a { text-decoration: none; }
+.top a:hover { text-decoration: underline; }
+
+.sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 400px) minmax(0, 1fr);
+  gap: clamp(40px, 5vw, 88px);
+  align-items: start;
+}
+.sheet > .cluster { display: grid; gap: 16px; justify-self: end; width: 100%; max-width: 760px; }
+.sheet + .sheet { margin-top: 30px; padding-top: 28px; border-top: 1px solid var(--rule); }
+
+/* ---------- Text column ---------- */
+.col h1, .col h2, .cluster-title {
+  margin: 0;
+  font-family: var(--text);
+  font-size: 15.5px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+.col h2 { margin-top: 1.3em; }
+.col h2:first-child { margin-top: 0; }
+.col h2 + p, .col h2 + ol { margin-top: 0.35em; }
+.sub { margin: 0 0 1.1em; color: var(--soft); }
+
+.thread {
+  width: 120px;
+  height: 3px;
+  margin: 0 0 1.4em;
+  background: linear-gradient(90deg, var(--indigo) 0 62%, var(--lilac) 62% 100%);
+  opacity: 0.85;
+}
+
+.lead { font-family: var(--head); font-size: 18px; line-height: 1.45; color: var(--indigo); }
+.rq { font-family: var(--head); font-style: italic; font-size: 17px; line-height: 1.5; color: var(--indigo); margin-bottom: 0.5em; }
+.small { font-size: 14px; color: var(--soft); }
+
+/* heard → changed: what a buyer met, and what the design does about it */
+.heard { list-style: none; margin: 0.5em 0 0; padding: 0; }
+.heard li { margin-bottom: 0.75em; }
+.heard b { font-weight: 700; }
+.heard .then { display: block; padding-left: 14px; color: var(--indigo); position: relative; }
+.heard .then::before { content: "→"; position: absolute; left: 0; color: var(--lilac); }
+
+/* ---------- Frames ---------- */
+.frame { position: relative; overflow: hidden; background: #0a0a0e; outline: 1px solid var(--rule); outline-offset: -1px; }
+.frame img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.r32 { aspect-ratio: 3 / 2; width: 100%; }
+figcaption { margin: 8px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--soft); }
+
+/* ---------- Slideshow: a quiet fade between screen captures ---------- */
+.slides .slide { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 900ms ease; }
+.slides .slide.on { opacity: 1; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .slides .slide { transition: none; } }
+
+.slidebar { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin-top: 6px; flex-wrap: wrap; row-gap: 4px; }
+.slidecap { flex: 1 1 260px; margin: 0; font-size: 12.5px; color: var(--soft); }
+.try { color: var(--indigo); font-weight: 700; font-size: 15px; letter-spacing: 0.02em; text-decoration: none; white-space: nowrap; }
+.try:hover { text-decoration: underline; text-underline-offset: 0.25em; }
+.controls { display: flex; align-items: center; gap: 4px; flex-shrink: 0; font-size: 14px; }
+.controls button { border: 0; background: none; padding: 6px 9px; font: inherit; color: var(--ink); cursor: pointer; }
+.controls .count { min-width: 2.6em; text-align: center; font-variant-numeric: tabular-nums; }
+
+/* screen 2: the robots row across, the result card below with its caption beside it */
+.wide img { aspect-ratio: 2160 / 800; object-fit: cover; }
+.tall { display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 22px; align-items: end; margin-top: 10px; }
+.tall img { aspect-ratio: 830 / 1228; object-fit: cover; }
+.tall figcaption { margin: 0 0 4px; font-size: 13.5px; }
+.tall figcaption b { display: block; margin-bottom: 4px; font-family: var(--head); font-weight: 500; font-size: 16px; color: var(--indigo); }
+
+/* hover: a frame grows a little; click: it opens large */
+.zoomable { cursor: zoom-in; transition: transform 350ms ease, box-shadow 350ms ease; }
+.frame.zoomable:hover, .zoomable:focus-visible { transform: scale(1.02); z-index: 2; box-shadow: 0 10px 28px rgba(20, 20, 24, 0.18); }
+@media (prefers-reduced-motion: reduce) { .zoomable, .zoomable:hover { transition: none; transform: none; } }
+
+/* ---------- Tensions: word pairs held apart by one thread ---------- */
+.tension-intro { margin: 0.35em 0 1em; font-size: 13.5px; color: var(--soft); }
+.tensions { list-style: none; margin: 0.4em 0 0; padding: 0; }
+.tensions li { margin-bottom: 1.05em; }
+.pair { display: flex; align-items: center; gap: 10px; }
+.pair b { font-family: var(--head); font-size: 17px; font-weight: 500; letter-spacing: 0.01em; color: var(--indigo); white-space: nowrap; }
+.pair i { flex: 1; height: 3px; min-width: 26px; background: linear-gradient(90deg, var(--indigo) 0 58%, var(--lilac) 58% 100%); opacity: 0.6; }
+.say { display: block; margin-top: 2px; font-size: 13.5px; line-height: 1.5; color: var(--soft); }
+
+.proposal {
+  padding-left: 14px;
+  border-left: 2px solid var(--lilac);
+  font-family: var(--head);
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--indigo);
+}
+
+/* ---------- Related work ---------- */
+.related { margin-top: 30px; padding-top: 18px; border-top: 1px solid var(--rule); }
+.related .cluster-title { margin: 0 0 12px; font-size: 13px; }
+.related ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin: 0; padding: 0; list-style: none; counter-reset: rw; }
+.related li { counter-increment: rw; font-size: 13.5px; line-height: 1.45; }
+.related li::before { content: counter(rw); display: block; margin-bottom: 4px; font-size: 11px; color: var(--soft); }
+
+/* ---------- Footer ---------- */
+.foot {
+  margin-top: 24px; padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+  font-size: 13.5px; color: var(--soft);
+}
+
+/* ---------- Large view ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 50;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+  padding: 48px 24px 32px;
+  background: rgba(251, 250, 248, 0.97);
+  cursor: zoom-out;
+}
+.lightbox[hidden] { display: none; }
+.lb-inner { max-width: min(1400px, 94vw); max-height: 82vh; display: flex; }
+.lb-inner img { max-width: 100%; max-height: 82vh; object-fit: contain; box-shadow: 0 12px 40px rgba(20, 20, 24, 0.18); cursor: default; }
+.lb-cap { margin: 0; text-align: center; font-size: 14px; color: var(--soft); }
+.lb-close { position: absolute; top: 14px; right: 18px; border: 0; background: none; font-size: 34px; line-height: 1; color: var(--indigo); cursor: pointer; }
+
+/* ---------- Tablet and phone ---------- */
+@media (max-width: 900px) {
+  body { font-size: 16px; }
+  .page { padding: 32px 24px 44px; }
+  .top { margin-bottom: 40px; }
+  .sheet { grid-template-columns: 1fr; gap: 28px; }
+  .sheet > .cluster { justify-self: stretch; max-width: none; }
+}
+@media (max-width: 760px) { .related ol { grid-template-columns: 1fr; gap: 14px; } }
+@media (max-width: 560px) { .tall { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .page { padding: 28px 16px 40px; } }
